@@ -64,12 +64,12 @@ class PetSelectionScreen extends ConsumerWidget {
                             .read(petProvider.notifier)
                             .chooseSpecies(species.id);
                         if (!context.mounted) return;
-                        // The home screen reacts to the provider change. When
-                        // this chooser was opened from settings, close it so
-                        // the updated pet is visible immediately.
-                        if (Navigator.of(context).canPop()) {
-                          Navigator.of(context).pop();
-                        }
+                        // Return to the root route after selection. On first
+                        // launch the chooser is rendered inside the root home
+                        // screen; from settings it is a pushed route. In both
+                        // cases the root home screen now reflects saved state.
+                        Navigator.of(context)
+                            .popUntil((route) => route.isFirst);
                       },
                       child: Container(
                         padding: const EdgeInsets.all(14),
