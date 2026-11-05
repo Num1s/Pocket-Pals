@@ -59,9 +59,18 @@ class PetSelectionScreen extends ConsumerWidget {
                     borderRadius: BorderRadius.circular(24),
                     child: InkWell(
                       borderRadius: BorderRadius.circular(24),
-                      onTap: () => ref
-                          .read(petProvider.notifier)
-                          .chooseSpecies(species.id),
+                      onTap: () async {
+                        await ref
+                            .read(petProvider.notifier)
+                            .chooseSpecies(species.id);
+                        if (!context.mounted) return;
+                        // The home screen reacts to the provider change. When
+                        // this chooser was opened from settings, close it so
+                        // the updated pet is visible immediately.
+                        if (Navigator.of(context).canPop()) {
+                          Navigator.of(context).pop();
+                        }
+                      },
                       child: Container(
                         padding: const EdgeInsets.all(14),
                         decoration: BoxDecoration(
