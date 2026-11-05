@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/pet_catalog.dart';
 import '../providers/pet_provider.dart';
 import '../themes/app_colors.dart';
+import 'pet_selection_screen.dart';
 
 class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
@@ -118,6 +119,17 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               ),
               onChanged: (enabled) =>
                   ref.read(petProvider.notifier).setAutoDecay(enabled),
+            ),
+            const SizedBox(height: 8),
+            OutlinedButton.icon(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (_) => const PetSelectionScreen(),
+                ),
+              ),
+              icon: const Icon(Icons.pets_rounded),
+              label: const Text('Choose a different pet'),
             ),
             const SizedBox(height: 8),
             OutlinedButton.icon(
