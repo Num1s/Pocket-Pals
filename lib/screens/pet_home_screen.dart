@@ -114,8 +114,13 @@ class PetHomeScreen extends ConsumerWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.star_rounded, color: Color(0xFFFFE89B), size: 20),
-            const SizedBox(width: 7),
+            Image.asset(
+              'assets/images/pocket_pals_logo.png',
+              width: 30,
+              height: 30,
+              filterQuality: FilterQuality.high,
+            ),
+            const SizedBox(width: 8),
             Text(
               'POCKET PALS',
               style: TextStyle(
@@ -132,8 +137,6 @@ class PetHomeScreen extends ConsumerWidget {
                 ],
               ),
             ),
-            const SizedBox(width: 7),
-            const Icon(Icons.star_rounded, color: Color(0xFFFFE89B), size: 20),
           ],
         ),
         const SizedBox(height: 13),

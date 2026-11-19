@@ -20,6 +20,15 @@ class PetSelectionScreen extends ConsumerWidget {
           child: ListView(
             padding: const EdgeInsets.fromLTRB(22, 28, 22, 24),
             children: [
+              Center(
+                child: Image.asset(
+                  'assets/images/pocket_pals_logo.png',
+                  width: 92,
+                  height: 92,
+                  filterQuality: FilterQuality.high,
+                ),
+              ),
+              const SizedBox(height: 18),
               const Text(
                 'YOUR NEW\nBEST FRIEND',
                 textAlign: TextAlign.center,
